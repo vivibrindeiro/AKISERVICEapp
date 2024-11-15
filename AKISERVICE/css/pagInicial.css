@@ -1,0 +1,98 @@
+.system-img {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.system-text {
+    text-align: center;
+    color: #007bff;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover; 
+}
+
+.card-body h5 {
+    color: #007bff; 
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+nav {
+    background-color: #007bff;
+}
+nav a.navbar-brand, nav a.nav-link {
+    color: white !important;
+}
+nav a.nav-link:hover {
+    color: #f8f9fa !important;
+}
+nav .navbar-toggler-icon {
+    background-color: white;
+}
+header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card-body {
+    padding: 20px;
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.input-group, .form-control, select.form-control {
+    border-radius: 12px;
+}
+.input-group-append .btn {
+    border-radius: 12px;
+}
+.service-rating {
+    font-size: 1.1em;
+    color: #ffd700;
+}
+.service-category {
+    font-size: 1em;
+    font-weight: 600;
+}
+.region-info {
+    font-size: 1rem; 
+    color: #010911;
+    font-weight: 500;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter-container .form-control {
+    width: auto;
+    margin-right: 10px;
+}

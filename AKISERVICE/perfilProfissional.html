@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Perfil do Profissional - AKiService</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.2.0/parse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="css/perfilProfissional.css" rel="stylesheet">
+   
+</head>
+<body>
+  
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">AKiService</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="pagInicial.html">Página Inicial</a></li>
+                <li class="nav-item"><a class="nav-link" href="#servicesHistory">Histórico de Serviços</a></li>
+                <li class="nav-item"><a class="nav-link" href="#manageServices">Gerenciar Serviços</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Perfil do Profissional</h1>
+        <div>
+            <p><strong>Nome:</strong> <span id="professionalName">Carregando...</span></p>
+            <p><strong>Email:</strong> <span id="professionalEmail">Carregando...</span></p>
+            <p><strong>Telefone:</strong> <span id="professionalPhone">Carregando...</span></p>
+            <p><strong>Região:</strong> <span id="professionalRegion">Carregando...</span></p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProfileModal">Editar Perfil</button>
+        </div>
+
+        <!-- Edição de Perfil -->
+        <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editProfileModalLabel">Editar Perfil</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="editName">Nome</label>
+                                <input type="text" class="form-control" id="editName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">Email</label>
+                                <input type="email" class="form-control" id="editEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editPhone">Telefone</label>
+                                <input type="text" class="form-control" id="editPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editRegion">Região</label>
+                                <input type="text" class="form-control" id="editRegion" required>
+                            </div>
+                            <button type="button" id="saveProfileChanges" class="btn btn-primary btn-block">Salvar Alterações</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Edição de Serviço -->
+<div class="modal fade" id="editServiceModal" tabindex="-1" role="dialog" aria-labelledby="editServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editServiceModalLabel">Editar Serviço</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editServiceForm">
+                    <div class="form-group">
+                        <label for="editServiceName">Título</label>
+                        <input id="editServiceName" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editServiceDescription">Descrição</label>
+                        <textarea id="editServiceDescription" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editServiceCategory">Categoria</label>
+                        <input id="editServiceCategory" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editServiceRegion">Região</label>
+                        <input id="editServiceRegion" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editServiceContact">Contato</label>
+                        <input id="editServiceContact" type="text" class="form-control" required>
+                    </div>
+                    <button id="saveServiceChanges" type="submit" class="btn btn-primary btn-block">Salvar Alterações</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+       <!-- Formulário para adicionar Serviço -->
+<h3 id="manageServices" class="mt-4">Gerenciar Serviços</h3>
+<form id="addServiceForm">
+    <div class="form-group">
+        <label for="serviceTitle">Título:</label>
+        <input type="text" id="serviceTitle" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="serviceDescription">Descrição:</label>
+        <textarea id="serviceDescription" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="serviceCategory">Categoria:</label>
+        <select id="serviceCategory" class="form-control" required>
+            <option value="">Selecione</option>
+            <option value="diarista">Diarista</option>
+            <option value="eletricista">Eletricista</option>
+            <option value="encanador">Encanador</option>
+            <option value="esteticista">Esteticista</option>
+            <option value="manicure">Manicure e Pedicure</option>
+            <option value="mecanico">Mecânico</option>
+            <option value="mudanca">Mudança e fretes</option>
+            <option value="pintor">Pintor</option>
+            <option value="pedreiro">Pedreiro</option>
+            <option value="outrasareas">Outras áreas</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="serviceRegion">Região:</label>
+        <select id="serviceRegion" class="form-control" required>
+            <option value="">Selecione</option>
+            <option value="fortaleza">Fortaleza</option>
+            <option value="caucaia">Caucaia</option>
+            <option value="maracanau">Maracanaú</option>
+            <option value="maranguape">Maranguape</option>
+            <option value="pacajus">Pacajus</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="serviceContact">Contato:</label>
+        <input type="text" id="serviceContact" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="serviceImage">Imagem do Serviço:</label>
+        <input type="file" id="serviceImage" class="form-control">
+    </div>
+    <button type="button" id="addServiceButton" class="btn btn-success">Adicionar Serviço</button>
+</form>
+
+
+        <!-- Tabela Serviços Cadastrados -->
+        <h3 class="mt-4">Serviços Cadastrados</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Região</th>
+                    <th>Contato</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="servicesTableBody">
+                
+            </tbody>
+        </table>
+        
+<!-- Histórico de Serviços -->
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <h3 id="servicesHistory" class="mt-4">Histórico de Serviços</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Serviço</th>
+                <th>Feedback</th>
+                <th>Avaliação</th>
+            </tr>
+        </thead>
+        <tbody id="servicesHistoryTableBody">
+            <!-- As linhas da tabela serão adicionadas dinamicamente aqui -->
+        </tbody>
+    </table>
+</body>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/perfilProfissional.js"></script>
+</body>
+</html>

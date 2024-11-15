@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login AKiService</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.4.2/parse.min.js"></script>
+    <script src="js/index.js" defer></script>
+</head>
+<body>
+    <div class="container-sm mt-5">
+        <img src="img/AKI.png" alt="Logo do AKiService" class="system-img mx-auto d-block">
+        <h2 class="system-text text-center">AKiSERVICE</h2>
+        <h5 class="text-center font-weight-light text-muted">Conectando você aos melhores profissionais da sua região!</h5>
+
+        <div id="formContainer" class="mt-4 p-4 bg-light rounded">
+            <div id="loginSection">
+                <h3 class="text-center">Login</h3>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="email" class="form-control form-control-lg" id="loginEmail" placeholder="E-mail" required aria-label="Email do usuário">
+                        <div id="loginEmailError" class="error-message text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-lg" id="loginPassword" placeholder="Senha" required aria-label="Senha do usuário">
+                        <div id="loginPasswordError" class="error-message text-danger"></div>
+                    </div>
+                    <button id="loginButton" type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+                    <p class="text-center">Não tem uma conta? <a href="#" id="showRegister">Cadastre-se</a></p>
+                    <p class="text-center"><a href="#" id="forgotPassword" data-toggle="modal" data-target="#passwordModal">Esqueci minha senha</a></p>
+                </form>
+            </div>
+
+            <div id="registerSection" style="display: none;">
+                <h3 class="text-center">Cadastro</h3>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="userType">Tipo de usuário:</label>
+                        <select id="userType" class="form-control" required>
+                            <option value="usuario">Usuário Comum</option>
+                            <option value="profissional">Profissional</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-lg" id="registerName" placeholder="Nome" required aria-label="Nome do usuário">
+                        <div id="registerNameError" class="error-message text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control form-control-lg" id="registerEmail" placeholder="E-mail" required aria-label="Email do usuário">
+                        <div id="registerEmailError" class="error-message text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-lg" id="registerPassword" placeholder="Senha" required aria-label="Senha do usuário">
+                        <div id="registerPasswordError" class="error-message text-danger"></div>
+                    </div>
+
+                    <div id="professionalFields" style="display: none;">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="registerContact" placeholder="Contato" aria-label="Contato do profissional">
+                            <div id="registerContactError" class="error-message text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerArea">Área de Atuação:</label>
+                            <select id="registerArea" class="form-control" aria-label="Área de atuação do profissional">
+                                <option value="">Selecione</option>
+                                <option value="diarista">Diarista</option>
+                                <option value="eletricista">Eletricista</option>
+                                <option value="encanador">Encanador</option>
+                                <option value="esteticista">Esteticista</option>
+                                <option value="manicure">Manicure e Pedicure</option>
+                                <option value="mecanico">Mecânico</option>
+                                <option value="mudanca">Mudança e fretes</option>
+                                <option value="pintor">Pintor</option>
+                                <option value="pedreiro">Pedreiro</option>
+                                <option value="outrasareas">Outras áreas</option>
+                            </select>
+                            <div id="registerAreaError" class="error-message text-danger"></div>
+                        </div>
+                        <div id="registerRegionField" class="form-group" style="display: none;">
+                            <label for="registerRegion">Região de Atendimento:</label>
+                            <select id="registerRegion" class="form-control" aria-label="Região de atendimento do profissional" required>
+                                <option value="" disabled>Selecione a região</option>
+                                <option value="fortaleza">Fortaleza</option>
+                                <option value="caucaia">Caucaia</option>
+                                <option value="maracanau">Maracanaú</option>
+                                <option value="maranguape">Maranguape</option>
+                                <option value="pacajus">Pacajus</option>
+                            </select>
+                            <div id="registerRegionError" class="error-message text-danger"></div>
+                        </div>
+                    </div>
+
+                    <button id="registerButton" type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+                    <p class="text-center">Já tem uma conta? <a href="#" id="showLogin">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="passwordModalLabel">Recuperar Senha</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Por favor, insira seu e-mail para recuperar sua senha.</p>
+                    <form id="passwordRecoveryForm">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="recoveryEmail" placeholder="Digite seu e-mail" required aria-label="Email para recuperação">
+                        </div>
+                        <div id="recoveryErrorMessage" class="error-message text-danger"></div>
+                        <button id="recoveryButton" type="submit" class="btn btn-primary">Enviar link de recuperação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.11.2"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+</html>

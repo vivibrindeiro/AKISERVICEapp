@@ -1,0 +1,116 @@
+
+body {
+    background-color: #ecf0f3;
+    font-family: Arial, sans-serif;
+}
+
+
+.navbar {
+    background-color: #0e7ded;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #ffd700 !important;
+}
+
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-top: 80px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(237, 234, 234, 0.932);
+}
+
+
+.service-header {
+    background-color: #177be0;
+    color: white;
+    padding: 30px 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(235, 233, 233, 0.997);
+    margin-bottom: 20px;
+}
+
+
+.service-details, .reviews {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+#reviewForm {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#reviewForm label {
+    font-weight: bold;
+}
+
+#reviewForm .form-control {
+    border-radius: 4px;
+}
+
+
+.btn-lg {
+    font-size: 18px;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+
+.fas, .fab {
+    margin-right: 10px;
+}
+
+    .stars i {
+        color: #f39c12;
+        margin-right: 2px;
+    }
+    .stars i.far.fa-star {
+        color: #ccc;
+    }
+    
+@media (max-width: 768px) {
+    .service-header h1 {
+        font-size: 2rem;
+    }
+
+    .service-details, .reviews, .other-professionals {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    
+}
+
+

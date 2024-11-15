@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKiService - Lista de Serviços</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="css/pagInicial.css" rel="stylesheet">
+ 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">AKiSERVICE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" id="profileLink" href="#" aria-label="Ir para o perfil">
+                        <i class="fas fa-user-circle" style="font-size: 1.5em;"></i>
+                        <span id="userType" style="margin-left: 5px;">Perfil</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" aria-label="Sair" style="margin-left: 15px;">
+                        <i class="fas fa-sign-out-alt" style="font-size: 1.5em; color: #f5f0f1;"></i>
+                        <span style="margin-left: 5px;">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="my-4">
+            <h2>Encontre o Serviço Ideal para Você</h2>
+        </header>
+
+       <!--Filtros -->
+       <label for="filterCategory">Filtrar por Região:</label>
+            <div class="input-group mb-3 filter-container">
+                <select id="filterRegion" class="form-control ml-2">
+                    <option value="Todas as regiões">Todas as regiões</option>
+                    
+                </select>
+</div>
+
+        
+        <div class="mb-3">
+            <label for="filterCategory">Filtrar por Categoria:</label>
+            <select class="form-control" id="filterCategory" aria-label="Selecionar categoria">
+                <option value="">Todas as categorias</option>
+                <option value="encanador">Encanador</option>
+                <option value="eletricista">Eletricista</option>
+                <option value="jardineiro">Jardineiro</option>
+                <option value="pinturas">Pinturas em Geral</option>
+            </select>
+        </div>
+
+      
+        <div id="serviceList" class="row"></div> 
+
+        <!-- Card de serviços -->
+        <div class="col-md-4 mb-4" id="serviceCardTemplate" style="display: none;">
+            <div class="card">
+                <img src="#" class="card-img-top" alt="Imagem do serviço">
+                <div class="card-body">
+                    <h5 class="card-title">Título do Serviço</h5>
+                    <p class="card-text service-category">Categoria: <span class="category-name">Pinturas</span></p>
+                    <p class="card-text">Descrição do serviço.</p>
+                    
+                    <p class="card-text"><small class="text-muted">Atendimento em: <span class="region-info">Região</span></small></p>
+                    <a href="#" class="btn btn-primary contact-professional" data-professional-id="">Contatar Profissional</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.4.2/parse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/pagInicial.js"></script> 
+</body>
+</html>
